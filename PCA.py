@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.datasets import fetch_mldata
 from sklearn.decomposition import PCA
 import os
+from scipy.stats import variation
 import pandas as pd
 
 #соединение файлов в одну таблицу
