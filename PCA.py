@@ -23,6 +23,14 @@ res = res[1:]
 #удаляем Nan
 res = res.loc[:, :34013]
 
+#фильтрация клеток и генов (из статьи)
+res = res.loc[res.sum(axis=1) >= 500] 
+leng = res.shape[0] 
+res = res.loc[:, res.sum(axis=0)/leng >= 0.005] 
+for i in list(res.columns): 
+    if variation(res[i]) < 1.2: 
+        res = res.drop(columns=[i])
+
 #PCA
 pca = PCA(n_components=40)
 pca_result = pca.fit_transform(res)
